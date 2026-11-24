@@ -1,9 +1,141 @@
-Convertidor de estudio de Nimbo
+Convertidor de estudio de Nimbo - FUENTE / SOURCE
 
-ffmpeg.exe es FFmpeg n9.0.2-39-g7adfbe40dc, compilacion estatica win64 LGPL (version 3 o posterior),
-sin modificar, tomada de FFmpeg-Builds, publicacion autobuild-2026-10-31-12-59:
-https://github.com/FFmpeg-Builds/FFmpeg-Builds/releases/download/autobuild-2026-10-31-12-59/ffmpeg-n9.0.2-39-g7adfbe40dc-win64-lgpl-9.0.zip
+ffmpeg.exe es FFmpeg n9.0.2-62-gac1c6e003f, compilacion estatica win64 LGPL (version 3 o posterior), SIN MODIFICAR,
+tomada tal cual de la compilacion oficial de FFmpeg-Builds:
+  publicacion  : autobuild-2026-11-23-12-43
+  archivo      : ffmpeg-n9.0.2-62-gac1c6e003f-win64-lgpl-9.0.zip
+  SHA-256 zip  : e174af1bc75771db087a1e9ab789d1f004215ca5b545d5ce826e2c8eec873efb
+  SHA-256 exe  : ace36305d537a20868a776819be530d3ce042cf93f70ed07a9cbdbbe7b03579c
+  descarga     : https://github.com/FFmpeg-Builds/FFmpeg-Builds/releases/download/autobuild-2026-11-23-12-43/ffmpeg-n9.0.2-62-gac1c6e003f-win64-lgpl-9.0.zip
+Marca: FFmpeg es una marca de Fabrice Bellard, fundador del proyecto.
+Nimbo no esta respaldado ni avalado por el proyecto FFmpeg.
 
-Codigo fuente correspondiente: https://git.ffmpeg.org/ffmpeg.git (n9.0.2-39-g7adfbe40dc)
-y las recetas de compilacion en https://github.com/FFmpeg-Builds/FFmpeg-Builds
-FFmpeg es una marca de Fabrice Bellard. Licencia completa en LICENSE.txt.
+CODIGO FUENTE CORRESPONDIENTE (en esta misma publicacion: https://github.com/Maverick-Dev01/nimbo-convertidor/releases/tag/convertidor-n9.0.2-lgpl-2)
+  1. FFmpeg, commit completo ac1c6e003f9e298536363e716750abc0c8f25b37 (descripcion n9.0.2-62-gac1c6e003f):
+       https://github.com/Maverick-Dev01/nimbo-convertidor/releases/download/convertidor-n9.0.2-lgpl-2/ffmpeg-ac1c6e003f-src.tar.xz   (SHA-256 cfc9aceaa45663fe099c094a103ffdd7784ea36867f88085b2a1188cae82cfc9)
+       espejo oficial: https://github.com/FFmpeg/FFmpeg/commit/ac1c6e003f9e298536363e716750abc0c8f25b37  y  https://git.ffmpeg.org/ffmpeg.git
+  2. Recetas de compilacion FFmpeg-Builds, commit completo b9ebe81995b58cd4e3177a6c0ad5dc2392f7f7fd, variante win64-lgpl-9.0, con su carpeta patches/:
+       https://github.com/Maverick-Dev01/nimbo-convertidor/releases/download/convertidor-n9.0.2-lgpl-2/ffmpeg-builds-b9ebe81-src.tar.xz   (SHA-256 0e0d1b6bce9898c67e419371b83a735edb51ac41f9832f7d52aec50a44e5b7c7)
+       original: https://github.com/FFmpeg-Builds/FFmpeg-Builds/tree/b9ebe81995b58cd4e3177a6c0ad5dc2392f7f7fd
+       (la etiqueta autobuild-2026-11-23-12-43 apunta a ese commit; verificado con la API de GitHub)
+  3. Codigo de las bibliotecas incluidas, cada una en el commit exacto que fijan las recetas:
+       https://github.com/Maverick-Dev01/nimbo-convertidor/releases/download/convertidor-n9.0.2-lgpl-2/deps-src.tar.xz   (SHA-256 522c8636552c8daa95d2387544cce3212229fe600961e2124ef7b566013f0643)
+     Dentro: deps/<nombre>-<commit>/. Limites: son copias de cada repositorio en ese commit SIN submodulos ni
+     sub-dependencias que la receta baja despues; de AMF solo van las cabeceras y su licencia; LAME va como copia
+     de svn r7153. La lista exacta (repositorio y commit de cada una) esta en THIRD-PARTY-NOTICES.txt.
+     Si un servidor original desaparece, esta copia es la que vale.
+
+Linea de configure real de ffmpeg.exe (salida de `ffmpeg.exe -buildconf`, ejecutada sobre el archivo publicado):
+  configuration:
+    --prefix=/ffbuild/prefix
+    --pkg-config-flags=--static
+    --pkg-config=pkg-config --cross-prefix=x86_64-w64-mingw32-
+    --arch=x86_64
+    --target-os=mingw32
+    --enable-version3
+    --disable-debug
+    --disable-w32threads
+    --enable-pthreads
+    --enable-iconv
+    --enable-zlib
+    --enable-libxml2
+    --enable-libvmaf
+    --enable-fontconfig
+    --enable-libharfbuzz
+    --enable-libfreetype
+    --enable-libfribidi
+    --enable-lcms2
+    --enable-vulkan
+    --enable-libdav1d
+    --enable-libvorbis
+    --enable-librav1e
+    --enable-librsvg
+    --disable-libxcb
+    --disable-xlib
+    --disable-libpulse
+    --enable-gmp
+    --enable-lzma
+    --enable-liblcevc-dec
+    --enable-opencl
+    --enable-amf
+    --enable-libaom
+    --disable-avisynth
+    --enable-chromaprint
+    --disable-libdavs2
+    --disable-libdvdread
+    --disable-libdvdnav
+    --disable-libfdk-aac
+    --enable-ffnvcodec
+    --enable-cuda-llvm
+    --disable-frei0r
+    --enable-libgme
+    --enable-libkvazaar
+    --enable-libaribb24
+    --enable-libaribcaption
+    --enable-libass
+    --enable-libbluray
+    --enable-libjxl
+    --enable-libmp3lame
+    --enable-libopus
+    --enable-libplacebo
+    --enable-librist
+    --enable-libssh
+    --enable-libtheora
+    --enable-libvpx
+    --enable-libwebp
+    --enable-libzmq
+    --enable-lv2
+    --enable-libvpl
+    --enable-openal
+    --enable-liboapv
+    --enable-libopencore-amrnb
+    --enable-libopencore-amrwb
+    --enable-libopenh264
+    --enable-libopenjpeg
+    --enable-libopenmpt
+    --disable-librubberband
+    --enable-schannel
+    --enable-sdl2
+    --enable-libsnappy
+    --enable-libsoxr
+    --enable-libsrt
+    --enable-libsvtav1
+    --enable-libtwolame
+    --enable-libuavs3d
+    --disable-libdrm
+    --enable-vaapi
+    --enable-vapoursynth
+    --disable-libvidstab
+    --enable-libvvenc
+    --disable-whisper
+    --disable-libx264
+    --disable-libx265
+    --disable-libxavs2
+    --disable-libxvid
+    --enable-libzimg
+    --disable-libzvbi
+    --extra-cflags=-DLIBTWOLAME_STATIC
+    --extra-cxxflags=
+    --extra-libs=-lgomp
+    --extra-ldflags=-pthread
+    --extra-ldexeflags=
+    --cc=x86_64-w64-mingw32-gcc
+    --cxx=x86_64-w64-mingw32-g++
+    --ar=x86_64-w64-mingw32-gcc-ar
+    --ranlib=x86_64-w64-mingw32-gcc-ranlib
+    --nm=x86_64-w64-mingw32-gcc-nm
+    --extra-version=20261123
+Para reconstruir: recetas del punto 2 (build.sh, variante win64-lgpl-9.0), mismos commits.
+
+LICENCIAS
+  LICENSE.txt           GNU LGPL v3 (FFmpeg, version 3 o posterior)
+  COPYING.GPLv3.txt     GNU GPL v3, que la LGPL v3 incorpora por referencia (texto del commit de FFmpeg)
+  THIRD-PARTY-NOTICES.txt  avisos y licencias de las bibliotecas que van dentro de ffmpeg.exe
+Esta compilacion no usa --enable-gpl ni --enable-nonfree (ffmpeg -L dice LGPL v3 o posterior).
+Esta publicacion sustituye a la anterior (convertidor-n9.0.2-lgpl-1), retirada porque esa compilacion de
+terceros incluia libzvbi, que contiene codigo GPL-2.0 solo.
+
+ENGLISH SUMMARY
+ffmpeg.exe is the unmodified official FFmpeg-Builds binary ffmpeg-n9.0.2-62-gac1c6e003f-win64-lgpl-9.0.zip. Corresponding source (FFmpeg commit,
+build recipes with patches, and library sources at the pinned commits) is published as the three release assets
+listed above. Licences: LICENSE.txt (LGPL v3), COPYING.GPLv3.txt, THIRD-PARTY-NOTICES.txt.
